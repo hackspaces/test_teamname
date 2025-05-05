@@ -1,0 +1,17 @@
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<h2>Teams</h2>
+{% if teams %}
+    {% for team in teams %}
+        <div class="team-card">
+            <div class="team-name">{{ team.name }}</div>
+            <div>Created: {{ team.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+            <div>Members: {{ team.members|length }}</div>
+            <a href="/teams/{{ team.id }}" hx-boost="true">View Details</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No teams have been created yet. Be the first!</p>
+{% endif %}

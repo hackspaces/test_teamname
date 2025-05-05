@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div id="create-team-form">
+        <h2>Create a New Team</h2>
+        <form hx-post="/teams" hx-target="#team-list" hx-swap="innerHTML">
+            <input type="text" name="team_name" placeholder="Enter team name" required>
+            <button type="submit">Create Team</button>
+        </form>
+    </div>
+
+    <div id="team-list">
+        {% include "partials/team_list.html" %}
+    </div>
+</div>
+{% endblock %}
