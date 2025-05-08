@@ -1,0 +1,12 @@
+{% for team in teams %}
+<div class="team-item">
+    <button 
+        hx-get="/teams/{{ team.id }}" 
+        hx-target="#team-detail" 
+        hx-swap="innerHTML">
+        {{ team.name }}
+    </button>
+</div>
+{% else %}
+<p>No teams yet. Add a team to get started.</p>
+{% endfor %}

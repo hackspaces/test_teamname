@@ -1,0 +1,17 @@
+{% for member in members %}
+<div class="member-item">
+    <div>
+        <strong>{{ member.name }}</strong> - {{ member.role }}
+    </div>
+    <button 
+        class="danger"
+        hx-delete="/members/{{ member.id }}" 
+        hx-target="#members-container" 
+        hx-swap="innerHTML"
+        hx-confirm="Are you sure you want to remove this member?">
+        Remove
+    </button>
+</div>
+{% else %}
+<p>No members in this team yet.</p>
+{% endfor %}
