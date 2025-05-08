@@ -105,11 +105,11 @@
     {% block partials %}
         <template id="team-detail-template">
             <div class="card">
-                <h2>{{ team.name }}</h2>
+                <h2>{team.name}</h2>
                 
                 <div class="member-form">
                     <h3>Add Team Member</h3>
-                    <form hx-post="/teams/{{ team.id }}/members" hx-target="#members-container" hx-swap="innerHTML">
+                    <form hx-post="/teams/{team.id}/members" hx-target="#members-container" hx-swap="innerHTML">
                         <input type="text" name="name" placeholder="Member Name" required>
                         <input type="text" name="role" placeholder="Role" required>
                         <input type="submit" value="Add Member">
@@ -124,11 +124,10 @@
         </template>
     {% endblock %}
 
-    <!-- Partials for HTMX - these are rendered server-side but included here for reference -->
+    <!-- Partials for HTMX - these will be loaded dynamically -->
     <div class="hidden">
+        <!-- Only including teams_list is safe here as it uses the 'teams' context variable -->
         {% include "partials/teams_list.html" %}
-        {% include "partials/team_detail.html" %}
-        {% include "partials/members_list.html" %}
     </div>
 </body>
 </html>
